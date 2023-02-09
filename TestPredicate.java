@@ -1,11 +1,12 @@
 package testJavaInterfaces;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 
-public class testJavaInterfaces {
+public class TestPredicate {
 
 	public static void main(String[] args) {
-		// Predicate - boolean function "test"
 		List<String> names = new ArrayList<>();
 		names.add("Vika");
 		names.add("Vova");
@@ -22,6 +23,7 @@ public class testJavaInterfaces {
 		for(String s:shortNames) {
 			System.out.println(s);
 		}
+
 	}
 	
 	public static <T> List<T> filter(List<T> list, Predicate<T> p) {
