@@ -6,3 +6,6 @@ defines an abstract method named test that accepts an object of generic type T a
 
 - Consumer<T>
 defines an abstract method named accept that takes an object of generic type T and returns no result (void), used for performing operations on elements
+
+- Function<T, R>
+defines an abstract method named apply that takes an object of generic type T as input and returns an object of generic type R, used for mapping
