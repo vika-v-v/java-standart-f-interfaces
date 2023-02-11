@@ -15,16 +15,42 @@ public class TestPredicate {
 		names.add("Kennet");
 		names.add("Rian");
 		
+		// simple use of the lambda
+		System.out.println("Names with 'e' in it:");
 		List<String> namesWithE = filter(names, (String name) -> name.contains("e"));
 		for(String s:namesWithE) {
 			System.out.println(s);
 		}
 		
-		List<String> shortNames = filter(names, (String name) -> name.length() <= 4);
+		System.out.println("\nShort names:");
+		
+		// putting functional interface on a variable
+		Predicate<String> shortName = (String s) -> s.length() <= 4;
+		
+		List<String> shortNames = filter(names, shortName);
 		for(String s:shortNames) {
 			System.out.println(s);
 		}
 		
+		// predicates provide .negate .and and .or methods
+		
+		System.out.println("\nLong names:");
+		List<String> longNames = filter(names, shortName.negate());
+		for(String s:longNames) {
+			System.out.println(s);
+		}
+		
+		// filtering for complex names
+		// a name is thought to be complex if it contains of more than 4 letters or has repeating letters
+		Predicate<String> nameWithRepeatingLetter = (String s) -> stringWithRepeatingChars(s);
+		List<String> complexNames = filter(names, nameWithRepeatingLetter.or(shortName.negate()));
+		
+		System.out.println("\nComplex names:");
+		for(String s:complexNames) {
+			System.out.println(s);
+		}
+		
+		System.out.println("\nCheck:");
 		System.out.println(check(2, (int i) -> i % 2 == 0));
 		
 		// DoublePredicate also possible
@@ -54,6 +80,18 @@ public class TestPredicate {
 	
 	public static <T> boolean checkGeneric(T a, Predicate<T> p) {
 		return p.test(a);
+	}
+	
+	public static boolean stringWithRepeatingChars(String str) {
+		String s = str.toLowerCase();
+		for(int i = 0; i < s.length(); i++) {
+			for(int j = i + 1; j < s.length(); j++) {
+				if(s.charAt(i) == s.charAt(j)) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 }
