@@ -21,6 +21,8 @@ public class TestConsumer {
 		
 		// increases all elements of an array to 50%
 		performOperation(Arrays.asList(0.0, 150.0, 20.0, 32.5), (Double d) -> System.out.println(d *= 1.5));
+	
+		// use IntConsumer to specify a type and disable autoboxing
 	}
 	
 	public static <T> void performOperation(List<T> list, Consumer<T> c) {

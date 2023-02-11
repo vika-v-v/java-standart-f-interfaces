@@ -27,6 +27,8 @@ public class TestPredicate {
 		
 		System.out.println(check(2, (int i) -> i % 2 == 0));
 		
+		// DoublePredicate also possible
+		
 		// gives error because IntPredicate disables autoboxing
 		// System.out.println(check(2, (Integer i) -> i % 2 == 0));
 		

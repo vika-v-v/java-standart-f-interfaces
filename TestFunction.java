@@ -24,6 +24,11 @@ public class TestFunction {
 		for(Integer i:l) {
 			System.out.println(i);
 		}
+		
+		// IntFunction is also possible
+		// ToIntFunction<T> - for an output
+		// is it possible to map into a List? List doesn't take primitive types
+		// how to use ToIntFunction<T> and IntToIntFunction?
 
 	}
 	
@@ -34,5 +39,6 @@ public class TestFunction {
 		}
 		return result;
 	}
+	
 
 }
