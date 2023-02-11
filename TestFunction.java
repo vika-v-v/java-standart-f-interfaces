@@ -15,15 +15,28 @@ public class TestFunction {
 		names.add("Kennet");
 		names.add("Rian");
 		
+		// example of mapping
 		List<Integer> positionOfLetterA = map(names, (String name) -> name.indexOf('a'));
+		
+		System.out.println("Names and positions of letter a:");
 		for(int i = 0; i < positionOfLetterA.size(); i++) {
 			System.out.println(names.get(i) + " " + positionOfLetterA.get(i));
 		}
 		
-		List<Integer> l = map(Arrays.asList("lambdas", "in", "action"), (String s) -> s.length());
+		// using method reference		
+		List<Integer> l = map(Arrays.asList("lambdas", "in", "action"), String::length);
+		
+		System.out.println("\nNumber of letters in the word:");
 		for(Integer i:l) {
 			System.out.println(i);
 		}
+		
+		// default method of a Function - .andThen
+		Function<Integer, Integer> f = x -> x + 1;
+		Function<Integer, Integer> g = x -> x * 2;
+		Function<Integer, Integer> h = f.andThen(g);
+		int result = h.apply(1);
+		System.out.println("\nTesting method:\n" + result);
 		
 		// IntFunction is also possible
 		// ToIntFunction<T> - for an output
